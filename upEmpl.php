@@ -15,10 +15,12 @@
 
 <?php
 
+
 require_once "conn.php"; 
  
     $id = $_GET['id'];
-    $sql = "SELECT name, lastname, age, phone_number, position_id FROM employees_table 
+    echo $id;
+    $sql = "SELECT * FROM employees_table 
             WHERE employee_id='$id'";
     $qry = mysqli_query($conn, $sql); 
 
@@ -26,48 +28,61 @@ require_once "conn.php";
     if(isset($_POST['update'])) 
     {
         $name = $_REQUEST['name'];
+        echo $name.'<br>';
+        $lastname = $_REQUEST['lastname'];
+        echo $lastname.'<br>';
         $age = $_REQUEST['age'];
+        echo $age.'<br>';
         $tel = $_REQUEST['phone_number'];
+        echo $tel.'<br>';
         $position = $_REQUEST['position_id'];
+        echo $position.'<br>';
         
-        $update = mysqli_query($conn,
-        "UPDATE employees_table 
+        $update = "UPDATE employees_table 
         SET position_id='$position', name='$name', lastname='$lastname', age='$age', phone_number='$tel' 
-        WHERE employee_id='$id'");
-
-        if($update)
+        WHERE employee_id='$id'";
+        
+        if(mysqli_query($conn, $update))
         {
-            mysqli_close($conn);   
             echo 'Record aded'; 
             header("location: employeesTable.php"); 
+            exit;
         }
         else
         {
             echo ("Error ");
             
         } 
-          	
-}
+        mysqli_close($conn); 
+    }       	
+
+
 
 ?>
  
-<form action="" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="<?php echo $row['name'] ?>">
-        <br>
-        <label for="lastname">Last name:</label>
-        <input type="text" id="lastname"  name="lastname" value="<?php echo $row['lastname'] ?>">
-        <br>
-        <label for="age">Age:</label>
-        <input type="text" id="age" name="age" value="<?php echo $row['age'] ?>">
-        <br>
-        <label for="phone_number">Phone Number:</label>
-        <input type="text" id="phone_number" name="phone_number" value="<?php echo $row['phone_number'] ?>">
-        <br>
-        <label for="position"></label>
-        <select name="position_id" id="position">
+ <form method="POST" >
+		<table >
+			<tr>
+				<td> <label for="name">Update name:</label></td>
+				<td> <input type="text" id="name" name="name" value="<?php echo $row['name'] ?>" Required></td>
+			</tr>
+			<tr>
+				<td> <label for="lastname">Update lastname:</label></td>
+				<td> <input type="text" id="lastname" name="lastname" value="<?php echo $row['lastname'] ?>" Required></td>
+			</tr>
+			<tr>
+				<td> <label for="age">Update age:</label></td>
+				<td> <input type="text" id="age" name="age" value="<?php echo $row['age'] ?>" Required></td>
+			</tr>
+			<tr>
+				<td> <label for="phone_number">Update phone number:</label></td>
+				<td> <input type="text" id="phone_number" name="phone_number" value="<?php echo $row['phone_number'] ?>" Required></td>
+			</tr>
+			<tr>
+				<td><label for="position_id">Position:</label></td>
+				<td><select id="position_id" name="position_id">
             <?php
-            $sql = "SELECT id, positions 
+            $sql = "SELECT pt.id, pt.positions 
                 FROM pt";
 
             $result = mysqli_query($conn, $sql);
@@ -78,10 +93,12 @@ require_once "conn.php";
                     <?php 
                 }
             } ?>
-        </select>    
-    <input type="submit" name="update" value="Update">
-</form>
-
+        </select></td>
+			</tr>
+	
+	<tr><td><input  type="submit" name="update" value="Update"></td></tr>		
+		</table>
+	</form>	
 
 
 </body>

@@ -1,6 +1,5 @@
 <?php
 $id = $_GET['id'];
-echo $id;
 require 'conn.php';
 
 $sql = "DELETE FROM pt WHERE id = $id"; 

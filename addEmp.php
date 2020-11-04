@@ -16,25 +16,25 @@
 <?php
 require 'conn.php';
 
-$name = $_REQUEST['name'];
-$lastName = $_REQUEST['lastname'];
-$age = $_REQUEST['age'];
-$contactNumber = $_REQUEST['phone_number'];
-$position = $_REQUEST['position_id'];
 
 
+if(isset($_POST['add'])){
 
-$addEmp_sql = "INSERT INTO employees_table (name, lastname, age, phone_number, position_id) 
-VALUES ('$name', '$lastName', '$age', '$contactNumber', '$position')";
+    $name = $_REQUEST['name'];
+    $lastName = $_REQUEST['lastName'];
+    $age = $_REQUEST['age'];
+    $contactNumber = $_REQUEST['phone_number'];
+    $position = $_REQUEST['position_id'];
 
-if(isset($_Post['add'])){
+    $addEmp_sql = "INSERT INTO employees_table (name, lastname, age, phone_number, position_id) 
+    VALUES ('$name', '$lastName', '$age', '$contactNumber', '$position')";
 
     if(mysqli_query($conn, $addEmp_sql)){
         echo "Records added successfully.";
         header('Location: employeesTable.php');
-    exit;
     } else {
-        echo 'Error';
+        echo "Error: " . $addEmp_sql . "
+" . mysqli_error($conn);
     }
     
     mysqli_close($conn);
