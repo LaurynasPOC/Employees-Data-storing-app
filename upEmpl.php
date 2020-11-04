@@ -20,8 +20,8 @@ require_once "conn.php";
  
     $id = $_GET['id'];
     echo $id;
-    $sql = "SELECT * FROM employees_table 
-            WHERE employee_id='$id'";
+    $sql = "SELECT * FROM employees_table
+    WHERE employee_id='$id'";
     $qry = mysqli_query($conn, $sql); 
 
     $row = mysqli_fetch_array($qry); 

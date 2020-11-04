@@ -5,6 +5,7 @@ App to store employees data
 * Browse Employees ant positions
 * Delete Employee or position
 * Add new position
+* Add new employee
 
 ## Usage:
 1. Clone the repo https://github.com/LaurynasPOC/PHPsprintas2.git
