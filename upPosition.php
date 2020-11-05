@@ -20,7 +20,6 @@
 require_once "conn.php"; 
  
     $id = $_GET['id'];
-    echo $id;
     $sql = "SELECT * FROM pt
     WHERE id = $id";
     $qry = mysqli_query($conn, $sql); 

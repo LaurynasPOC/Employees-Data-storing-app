@@ -36,8 +36,8 @@
 	?>
   <div class="form">
     <form  method="post" action="">		
-		<p>New position</p><br>
-		<input type="text" name="positions">
+		<label for="positions">Add new position:</label>
+		<input type="text" id="positions" name="positions">
 		<input type="submit" name="add" value="Add">
 	</form>
 	</div> 
