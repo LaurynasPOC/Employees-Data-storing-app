@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>document</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
 <div class="header">
@@ -21,7 +21,7 @@ require_once "conn.php";
     $id = $_GET['id'];
     echo $id;
     $sql = "SELECT * FROM employees_table
-    WHERE employee_id='$id'";
+    WHERE employee_id = $id";
     $qry = mysqli_query($conn, $sql); 
 
     $row = mysqli_fetch_array($qry); 
@@ -40,7 +40,7 @@ require_once "conn.php";
         
         $update = "UPDATE employees_table 
         SET position_id='$position', name='$name', lastname='$lastname', age='$age', phone_number='$tel' 
-        WHERE employee_id='$id'";
+        WHERE employee_id = $id";
         
         if(mysqli_query($conn, $update))
         {
@@ -59,7 +59,7 @@ require_once "conn.php";
 
 
 ?>
- 
+ <div class="form">
  <form method="POST" >
 		<table >
 			<tr>
@@ -72,11 +72,11 @@ require_once "conn.php";
 			</tr>
 			<tr>
 				<td> <label for="age">Update age:</label></td>
-				<td> <input type="text" id="age" name="age" value="<?php echo $row['age'] ?>" Required></td>
+				<td> <input type="number" id="age" name="age" value="<?php echo $row['age'] ?>" Required></td>
 			</tr>
 			<tr>
 				<td> <label for="phone_number">Update phone number:</label></td>
-				<td> <input type="text" id="phone_number" name="phone_number" value="<?php echo $row['phone_number'] ?>" Required></td>
+				<td> <input type="number" id="phone_number" name="phone_number" value="<?php echo $row['phone_number'] ?>" Required></td>
 			</tr>
 			<tr>
 				<td><label for="position_id">Position:</label></td>
@@ -99,7 +99,7 @@ require_once "conn.php";
 	<tr><td><input  type="submit" name="update" value="Update"></td></tr>		
 		</table>
 	</form>	
-
+    </div>
 
 </body>
 </html>

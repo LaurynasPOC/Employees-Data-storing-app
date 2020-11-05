@@ -7,6 +7,11 @@
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="header">
+        <a href="employeesTable.php">Employees</a>
+        <a href="pt.php">Positions</a>
+        <a href="">Employees in departments</a>
+    </div>
 <?php 
     
 	require_once 'conn.php';
@@ -19,20 +24,22 @@
 		 $sql = "INSERT INTO pt (positions)
 		 VALUES ('$pos')";
 		 if (mysqli_query($conn, $sql)) {
-             echo 'record aded';
+			 echo 'record aded';
+			 mysqli_close($conn);
 			header('Location: pt.php');
 		 } else {
 			echo "Error: " . $sql . "
 	" . mysqli_error($conn);
 		 }
-		 mysqli_close($conn);
+		 
 	}
 	?>
-   
+  <div class="form">
     <form  method="post" action="">		
 		<p>New position</p><br>
 		<input type="text" name="positions">
 		<input type="submit" name="add" value="Add">
 	</form>
+	</div> 
 </body>
 </html>

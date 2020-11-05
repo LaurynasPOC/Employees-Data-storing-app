@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 <body>
@@ -39,6 +39,7 @@ if (mysqli_num_rows($result) > 0) { ?>
         <td><?php echo $row["fullname"]?></td>
         <td> 
         <button><a href='delPos.php?id="<?php echo $row['id']?>"'>Delete</a></button>
+        <button><a href='upPosition.php?id="<?php echo $row['id']?>"'>Update</a></button>
         </td>
         </td>
         </tr>

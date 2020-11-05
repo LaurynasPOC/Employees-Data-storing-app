@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 <body>
@@ -42,7 +42,7 @@ if(isset($_POST['add'])){
 
 
 ?>
-
+<div class="form">
 <form action="" method="POST">
     <label for="">New employee data:</label>
     <input type="text" name="name" placeholder="Name">
@@ -66,6 +66,7 @@ if(isset($_POST['add'])){
         </select>
         <input type="submit" name='add' value="Add">
 </form>
+</div>
 
 
 </body>
