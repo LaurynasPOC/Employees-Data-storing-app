@@ -11,8 +11,8 @@
 <body>
 	<div class="header">
 		<a href="employeesTable.php">Employees</a>
-		<a href="pt.php">Positions</a>
-		<a href="">Employees in departments</a>
+		<a href="positionsTable.php">Positions</a>
+		<a href=""></a>
 	</div>
 	<?php
 
@@ -27,7 +27,7 @@
 		if (mysqli_query($conn, $sql)) {
 			echo 'record aded';
 			mysqli_close($conn);
-			header('Location: pt.php');
+			header('Location: positionsTable.php');
 		} else {
 			echo "Error: " . $sql . "
 	" . mysqli_error($conn);

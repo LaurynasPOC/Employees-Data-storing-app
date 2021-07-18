@@ -4,7 +4,7 @@ position varchar(40)
 );
 
 Create table employees (
-id int(8)UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+id_number int(8)UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 name varchar(20),
 lastname varchar(20),
 age int(8),
