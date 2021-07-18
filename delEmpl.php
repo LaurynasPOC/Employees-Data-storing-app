@@ -3,7 +3,7 @@ $id = $_GET['id'];
 echo $id;
 require_once 'conn.php';
 
-$sql = "DELETE FROM employees_table WHERE employee_id = $id"; 
+$sql = "DELETE FROM employees WHERE id_number = $id";
 if (mysqli_query($conn, $sql)) {
     mysqli_close($conn);
     header('Location: employeesTable.php');
@@ -11,4 +11,3 @@ if (mysqli_query($conn, $sql)) {
 } else {
     echo "Error deleting record";
 }
-?>

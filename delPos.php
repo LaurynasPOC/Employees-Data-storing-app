@@ -2,7 +2,8 @@
 $id = $_GET['id'];
 require 'conn.php';
 
-$sql = "DELETE FROM pt WHERE id = $id"; 
+$sql = "DELETE FROM positions WHERE id = $id";
+
 if (mysqli_query($conn, $sql)) {
     mysqli_close($conn);
     header('Location: pt.php');
@@ -10,4 +11,3 @@ if (mysqli_query($conn, $sql)) {
 } else {
     echo "Error deleting record";
 }
-?>
